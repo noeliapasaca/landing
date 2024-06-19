@@ -11,7 +11,7 @@
 // Create SCSS variables
 $white: #ffffff;
 $black: #000000;
-$primary: #3b5d50;
+$primary: #7ac3eb;
 $secondary: #f9bf29;
 $dark: #2f2f2f;
 $light: #dce5e4;
@@ -54,7 +54,7 @@ a {
 }
 
 .custom-navbar {
-	background: $primary!important;
+	background-color: $primary!important;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	.navbar-brand {
@@ -161,7 +161,7 @@ a {
 	}
 	p {
 		color: rgba($white, .5);
-		margin-botom: 30px;
+		margin-bottom: 30px;
 	}
 	.hero-img-wrap {
 		position: relative;
@@ -869,9 +869,7 @@ textarea {
 	input {
 		border-radius: 10px!important;
 	}
-	.btn {
-
-	}
+	
 }
 .text-primary {
 	color: $primary!important;
