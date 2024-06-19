@@ -84,11 +84,69 @@ async function obtenerDatos() {
     return;
   }
   const datos = await respuesta.json();
-  console.log(datos); // Procesar o mostrar los datos obtenidos
+  let votesMap = new Map();
 
-  
+  for (const key in datos) {
+    let vote = datos[key].select;
+    if (votesMap.has(vote)) {
+      votesMap.set(vote, votesMap.get(vote) + 1);
+    } else {
+      votesMap.set(vote, 1);
+    }
+  }
+
+
+  // Convertir el Map a un Array y ordenarlo en orden descendente por votos
+  let sortedVotes = Array.from(votesMap.entries()).sort((a, b) => b[1] - a[1]);
+  console.log(sortedVotes);
+  // Generar el HTML para cada elemento y agregarlo a la página
+  document.getElementById("get").innerHTML = '';
+  const places = ["Primer lugar", "Segundo lugar", "Tercer lugar"];
+  for (let i = 0; i < sortedVotes.length; i++) {
+    let [select, votes] = sortedVotes[i];
+    let template = `   
+        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+					<div class="post-entry">
+						<img src="images/${select}.png" alt="${select}"
+								class="img-fluid">
+						<div class="post-content-entry">
+							<h3 >${places[i]}</h3>
+							<p><strong>Marca:</strong>: ${select}</p>
+							<p><strong>Votos</strong>: ${votes}</p>
+						</div>
+					</div>
+				</div>
+              
+      `;
+    document.getElementById("get").innerHTML += template;
+  }
 
 
 }
 
 obtenerDatos();
+
+async function rakingKits() {
+  const url = "https://lavender-59c67-default-rtdb.firebaseio.com/lavender.json";
+  const respuesta = await fetch(url);
+  if (!respuesta.ok) {
+    console.error("Error:", respuesta.status);
+    return;
+  }
+  const datos = await respuesta.json();
+  let votesMap = new Map();
+
+
+  for (const key in datos) {
+    let vote = datos[key].kit;
+    if (votesMap.has(vote)) {
+      votesMap.set(vote, votesMap.get(vote) + 1);
+    } else {
+      votesMap.set(vote, 1);
+    }
+  }
+
+
+}
+rakingKits();
+window.addEventListener("DOMContentLoaded", loaded);
