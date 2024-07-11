@@ -1,11 +1,6 @@
 /*-------*/
 let loaded = (eventLoaded) => {
 
-  /* Primera parte alerta */
-  window.alert("landing page loaded");
-  console.log(eventLoaded);
-  debugger;
-
   /* Segunda parte - document API */
   let myform = document.getElementById('formu');
   debugger
@@ -47,7 +42,7 @@ let loaded = (eventLoaded) => {
       return;
     }
 
-    alert('Formulario válido. Procediendo con el envío...');
+    alert('Formulario válido. Procediendo con el envío.');
 
     const datos = {
       nombre: nombre,
@@ -127,7 +122,7 @@ async function obtenerDatos() {
 obtenerDatos();
 
 async function rakingKits() {
-  const url = "https://lavender-59c67-default-rtdb.firebaseio.com/lavender.json";
+  const url = "https://prueba-a229e-default-rtdb.firebaseio.com/collection.json";
   const respuesta = await fetch(url);
   if (!respuesta.ok) {
     console.error("Error:", respuesta.status);
