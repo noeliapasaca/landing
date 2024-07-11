@@ -102,12 +102,13 @@ async function obtenerDatos() {
     let template = `   
         <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
 					<div class="post-entry">
-						<img src="images/${select}.png" alt="${select}"
-								class="img-fluid">
+						<a href="#" class="post-thumbnail"><img src="images/${select}.png" alt="${select}"
+								class="img-fluid"></a>
 						<div class="post-content-entry">
-							<h3 >${places[i]}</h3>
-							<p><strong>Marca:</strong>: ${select}</p>
-							<p><strong>Votos</strong>: ${votes}</p>
+							<h3>${select}</h3>
+							<div class="meta">
+								<a>${places[i]} </a><span>con <a href="#">${votes} votos.</a></span>
+							</div>
 						</div>
 					</div>
 				</div>
